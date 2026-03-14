@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para el amor de mi vida ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(45deg,#ff3d7f,#ff9eb5);
+color:white;
+overflow-x:hidden;
+}
+
+h1{
+font-size:50px;
+margin-top:30px;
+animation: latido 1s infinite;
+}
+
+@keyframes latido{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+.teamo{
+font-size:60px;
+margin-top:20px;
+}
+
+#contador{
+font-size:25px;
+margin:20px;
+}
+
+.carta{
+width:85%;
+max-width:600px;
+margin:auto;
+background:rgba(255,255,255,0.2);
+padding:25px;
+border-radius:20px;
+font-size:18px;
+line-height:1.6;
+min-height:150px;
+}
+
+button{
+margin:20px;
+padding:15px 30px;
+font-size:20px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:white;
+color:#ff3d7f;
+}
+
+.corazon{
+position:absolute;
+font-size:30px;
+animation: explotar 1s forwards;
+}
+
+@keyframes explotar{
+0%{transform:scale(1);opacity:1;}
+100%{transform:scale(3);opacity:0;}
+}
+
+.lluvia{
+position:fixed;
+top:-20px;
+font-size:25px;
+animation: caer linear forwards;
+}
+
+@keyframes caer{
+to{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>mi vida ❤️</h1>
+
+<div class="teamo">MI PRINCESA TE AMO</div>
+
+<div id="contador"></div>
+
+<h2>💌 Carta para ti</h2>
+
+<div class="carta" id="texto"></div>
+
+<h2>💍 quieres seguir conmigo?</h2>
+
+<button onclick="respuesta()">Sí ❤️</button>
+
+<audio autoplay loop>
+<source src="musica.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* CARTA QUE SE ESCRIBE */
+
+let carta="VIDA MIA, desde que llegaste a mi vida todo cambió. Cada día contigo se siente especial y cada momento se vuelve un recuerdo bonito. Me encanta tu sonrisa, tu forma de ser y lo feliz que me haces sentir. Quiero seguir compartiendo momentos contigo, apoyarnos siempre y demostrarte todos los días lo importante que eres para mí. Gracias por estar en mi vida. Te Amo muchísimo ❤️";
+
+let i=0;
+
+function escribir(){
+if(i<carta.length){
+document.getElementById("texto").innerHTML+=carta.charAt(i);
+i++;
+setTimeout(escribir,40);
+}
+}
+
+escribir();
+
+/* CONTADOR DE RELACIÓN */
+
+let inicio=new Date("November 8, 2025 00:00:00");
+
+function actualizar(){
+let ahora=new Date();
+let diferencia=ahora-inicio;
+
+let dias=Math.floor(diferencia/(1000*60*60*24));
+
+document.getElementById("contador").innerHTML=
+"🌹 Llevamos juntos: "+dias+" días ❤️";
+}
+
+setInterval(actualizar,1000);
+
+/* CORAZONES AL HACER CLICK */
+
+document.addEventListener("click",function(e){
+
+let corazon=document.createElement("div");
+corazon.className="corazon";
+corazon.innerHTML="❤️";
+
+corazon.style.left=e.pageX+"px";
+corazon.style.top=e.pageY+"px";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{corazon.remove()},1000);
+
+});
+
+/* CUANDO ELLA DIGA SI */
+
+function respuesta(){
+
+alert("Sabía que dirías que sí ❤️");
+
+for(let i=0;i<200;i++){
+
+let corazon=document.createElement("div");
+corazon.className="lluvia";
+corazon.innerHTML="❤️";
+
+corazon.style.left=Math.random()*100+"vw";
+corazon.style.animationDuration=(3+Math.random()*3)+"s";
+
+document.body.appendChild(corazon);
+
+setTimeout(()=>{corazon.remove()},6000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
